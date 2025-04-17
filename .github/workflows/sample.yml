@@ -1,0 +1,21 @@
+name: workflow-1
+on: push
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test Code
+        run: npm run test
+      - name: Build Code
+        run: npm run build
+     
